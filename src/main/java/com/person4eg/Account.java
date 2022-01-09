@@ -1,5 +1,7 @@
 package com.person4eg;
 
+import java.util.regex.Pattern;
+
 public class Account {
 
     private final String name;
@@ -10,9 +12,6 @@ public class Account {
 
     public boolean checkNameToEmboss() {
         if (name == null) return false;
-        if (name.length() < 3 || name.length() > 19) return false;
-        if (name.split(" ").length != 2) return false;
-        if (name.charAt(0) == ' ' || name.charAt(name.length() - 1) == ' ') return false;
-        return true;
+        return Pattern.matches("(?=^.{3,19}$)(^\\S+\\s\\S+$)",name);
     }
 }
